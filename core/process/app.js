@@ -4,9 +4,9 @@ process.stdout.write('输入文字:');//标准的输出流，比console.log 更�
 
 process.stdin.resume();
 
-process.stdin.on('data',function (data) {
-    process.stdout.write('输入的是:'+data.toString())
-  })
+process.stdin.on('data', function (data) {
+  process.stdout.write('输入的是:' + data.toString())
+})
 
 //输入命令
 // node app.js name=zdd --v "zhoudd"
