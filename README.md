@@ -6,5 +6,10 @@
 # 调试
 * node debug app.js
 
+# core
+* event
+EventM
+
+
 # 参考
 * [微软](https://code.visualstudio.com/docs/runtimes/nodejs)
