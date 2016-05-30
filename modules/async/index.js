@@ -2,7 +2,7 @@ var async = require('async')
 
 var fs = require('fs');
 
-//异步串行执行
+//异步串行执行（无依赖）
 async.series([
     function (callback) {
         console.log("read file1.text");
@@ -35,3 +35,33 @@ async.parallel([
 
     })
 
+//异步串行执行（有依赖）
+
+async.waterfall([
+    function (callback) {
+        fs.readFile('file1.text', 'utf-8', function (err, content) {
+            console.log('waterfall file1.text:', content);
+            callback(err, content)
+        });
+
+    },
+    function (arg, callback) {
+        console.log('arg', arg);
+        fs.readFile(arg, 'utf-8', function (err, content) {
+            console.log('waterfall file2.text', content);
+            callback(err, content)
+        });
+
+    },
+    function (arg, callback) {
+        console.log('arg', arg);
+        fs.readFile(arg, 'utf-8', function (err, content) {
+            console.log('waterfall file3.text', content);
+            callback(err, content)
+        });
+
+    }
+], function name(err, result) {
+    console.log('waterfall err', err);
+    console.log('waterfall result', result);
+})
