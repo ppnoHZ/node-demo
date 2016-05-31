@@ -10,7 +10,10 @@ var server = net.createServer(function (socket) {
         console.log("data:", data.toString('utf-8'));
         // console.log("data", iconv.decode(data, 'win1251')); //Buffer转字符串
         console.log('发送数据');
-        socket.write('你好');
+        //socket.write('你好');
+        
+        socket.write('Echo server\r\n');
+        socket.pipe(socket);
     })
 
     socket.on('end', function () {

@@ -11,5 +11,6 @@ client.on('data', function (data) {
     console.log('data',data.toString());
 })
 client.on('end', function () {
+    
     console.log('client disconnected');
 })
